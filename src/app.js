@@ -1,4 +1,4 @@
-const web3 = require('../node_modules/web3/lib/index');
+//const web3 = require('../node_modules/web3/lib/index');
 
 App = {
   load: async () => {
@@ -10,16 +10,16 @@ App = {
   // https://medium.com/metamask/https-medium-com-metamask-breaking-change-injecting-web3-7722797916a8
   loadWeb3: async () => {
     
-    // if (typeof web3 !== 'undefined') {
-    //   console.log("here");
-    //   App.web3Provider = web3.currentProvider
-    //   web3 = new Web3(web3.currentProvider)
+    if (typeof web3 !== 'undefined') {
+      console.log("here");
+      App.web3Provider = web3.currentProvider
+      web3 = new Web3(web3.currentProvider)
       
-    // } else {
-    //   window.alert("Please connect to Metamask.")
-    //   App.web3Provider = new web3.providers.HttpProvider('http://127.0.0.1:7545');
-    //   web3 = new Web3(App.web3Provider);
-    // }
+    } else {
+      window.alert("Please connect to Metamask.")
+      App.web3Provider = new web3.providers.HttpProvider('http://127.0.0.1:7545');
+      web3 = new Web3(App.web3Provider);
+    }
     //Modern dapp browsers...
     if (window.ethereum) {
       window.web3 = new Web3(ethereum)
