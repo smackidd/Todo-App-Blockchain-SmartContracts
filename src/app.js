@@ -126,10 +126,17 @@ App = {
       } else {
         $('#taskList').append($newTaskTemplate)
       }
-    }
+      // Show the task
+      $newTaskTemplate.show() 
+    }  
+  },
 
-    // Show the task
-    $newTaskTemplate.show()  
+  createTask: async () => {
+    App.setLoading(true)
+    const content = $('#newTask').val()
+    //talk to truffle using web3.js to call smart contract 
+    await App.todoList.createTask(content)
+    window.location.reload()
   }
 }
 
